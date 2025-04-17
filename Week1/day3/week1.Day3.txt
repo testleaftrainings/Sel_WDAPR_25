@@ -1,0 +1,136 @@
+
+--------------------------------------------------------------------
+
+Method Signature:
+
+
+📝 Java Class Fundamentals: How Methods, Objects, and Variables Work Together
+
+🔷 1. Class
+
+	A blueprint that defines variables (data) and methods (behavior).
+
+
+🔷 2.Local Variables(Fields / Attributes)
+
+	Method variables:Declared inside the method
+
+   2A.Global Variables (Fields / Attributes)
+
+	Instance variables: Declared inside the class but outside any method.
+
+	They hold the state of each object.
+
+	🧠 When to Use Global Variables:
+	Use instance/global variables when:
+
+-------->The data represents the state of the object.
+
+---------->You need to use the same data across multiple methods.
+
+------------->You want cleaner method signatures (no repetitive passing of parameters).
+
+------------------>Methods and  global varibales were properties of the class
+
+
+🔷 3. Methods
+
+	Define the actions or behaviors that can be performed using the object's data (variables).
+
+	Can access and modify instance variables.
+
+🔷 4. Object
+
+	An instance of the class.
+
+	It gets its own copy of instance variables.
+
+	Used to call methods and access variables.
+
+🔷 5. Constructor
+
+	A special method used to initialize object variables when the object is created.
+
+
+--------------------------------------------------------------------------
+Feature 	| 	Square	 	| Rectangle
+Sides 		| All sides equal 	| Opposite sides equal
+Area Formula 	| Area = a × a 		| Area = l × b
+Volume Formula 	| Volume = a × a × a 	| Volume = l × b × h
+Shape 		| Four equal sides 	| Opposite sides equal
+
+---------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+🔷 Properties of Arrays in Java
+
+No           Property	                      Description
+1 | Fixed Size            | Once created, array size cannot be changed.
+2 | Homogeneous Elements  | Stores only same data type (int, String, etc.).
+3 | Index-Based Access    | Access elements using index (starts from 0).
+4 | Contiguous Memory     | Elements are stored in continuous memory blocks.
+5 | Multi-Dimensional     | Supports 1D, 2D, and multi-dimensional arrays.
+6 | Default Values        | Auto-filled with defaults (0, false, null).
+7 | Object Type           | Arrays are objects and inherit from Object class.
+8 | Heap Storage          | Arrays are stored in heap memory.
+9 | Length Property       | Use `.length` to get the size of the array.
+
+
+❌ Cons of Arrays in Java
+
+No           Property	                      Description
+1 | Fixed Size            | You must define the size at creation and it can't grow/shrink dynamically.
+2 | No Built-in Methods   | Arrays don't have built-in methods like add(), remove(), contains() (unlike ArrayList).
+3 | Insertion is Costly   | Inserting elements in the middle requires shifting elements manually.
+4 | Deletion is Manual    | Deleting elements also needs shifting, which can be inefficient.
+5 | Type-Specific         | Arrays can only store one data type—no mix (unless using Object[]).
+6 | Memory Wastage        | If size is overestimated, unused space leads to memory wastage.
+7 | No Resizing           | You need to create a new array and copy data to resize it.
+
+
+Arrays are fixed size, so inserting or deleting means creating a new array and manually shifting elements.
+
+This is why ArrayList is preferred in most real-time automation use cases where dynamic changes are needed.
+
+
+
+Use Case :
+
+✅ 1. Storing Multiple Test Data
+✅ 2. Validating UI Elements
+✅ 3. Handling Web Tables or Lists
+✅ 4. Collecting Error Messages
+✅ 5. Bulk Assertion/Comparison
+
+but arrays are super useful when:
+
+A)You know the size ahead of time.
+
+B)You want better performance.
+
+C)You are dealing with fixed input/output sets.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
