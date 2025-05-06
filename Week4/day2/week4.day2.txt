@@ -1,0 +1,67 @@
+Today's agenda
+
+
+10:00 to 11:30 ---> Actions class
+11:30 to 12.00 ---> Break + Activity
+12:00 to 01:00 ---> webTable
+
+
+
+
+
+
+
+
+
+--------------------------------------------------
+
+Exceptions:
+
+1)InvalidSelectorException
+Definition:
+This exception occurs when the format of a given selector is incorrect or unsupported.
+Common Causes:
+Syntax errors in the selector string.
+Handling Tips:
+Double-check the syntax of your selector.
+
+
+2)NoSuchElementException
+Definition:
+This exception is thrown when an element could not be found on the page.
+It indicates that the search operation did not locate the element within the current webpage.
+Common Causes:
+The element does not exist on the page at the time of search.
+The selector used does not correctly identify the desired element.
+The element is not loaded yet due to web page's dynamic loading or delays.
+Handling Tips:
+Ensure the correctness of the selector.
+Use waits ( implicit) to allow time for the element to load.
+
+3)StaleElementReferenceException
+Definition:
+This exception is thrown when a previously located element is no longer attached to the DOM (Document Object Model).
+It occurs if the web page's content changes, rendering the previously referenced element invalid or outdated.
+Common Causes:
+The DOM has been updated or refreshed after the element was located.
+The element has been removed or replaced in the DOM.
+Actions like navigation, AJAX calls, or page reloads have caused the element reference to become stale.
+Handling Tips:
+Re-locate the element after the DOM update or refresh.
+
+
+-------------------------------------------------------------------------------------------------------------------
+// step 1 : we have to choose our file type 
+		
+		// step 2 : we have to create a folder 
+		// File class-- . name of the folder / name of the snapshot . image format
+		
+		//step 3 : we are merging the source file with the destination file using the Apache.commons.io
+		FileUtils
+
+        
+<dependency>
+    <groupId>commons-io</groupId>
+    <artifactId>commons-io</artifactId>
+    <version>2.11.0</version>
+</dependency>
