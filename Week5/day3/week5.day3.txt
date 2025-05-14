@@ -1,0 +1,144 @@
+#############################################################################################
+
+# Steps to do Excel Integration:
+
+1. inside excel program craete one input agrs and pass variable inside workbook
+ 
+(./data/"+fileName+".xlsx)
+ 
+ 
+2. into the BaseClass or PSM  and declare a fileName globally
+ 
+public String fileName; ------------ > Global declaration
+
+3. Move the sendData Method to the BaseClass or PSM 
+
+@DataProvider(name="fetchData")
+public String[][] sendData() throws IOException {
+return ReadExcel.readExcel(fileName); 
+}
+4. Create setValues() inside each testcase and annotate with @BeforeTest and mention the filename here
+
+@BeforeTest
+public void setValues() {
+fileName="EditLead";
+} 
+5. Finally , run from the xml file
+
+
+
+Gobal variables : driver , fileName
+ @BeforeTest-initializing the fileName here
+      @DataProvider
+         @parameters
+           @BeforeMethod- required data for the testcases are collected here -PSM
+                    initializing the driver here
+                @Test
+            @AfterMethod
+
+
+
+
+
+
+
+
+https://cucumber.github.io/cucumber-eclipse/update-site - plugin
+<dependency>
+    <groupId>io.cucumber</groupId>
+    <artifactId>cucumber-testng</artifactId>
+    <version>7.15.0</version>
+</dependency>
+
+<dependency>
+    <groupId>io.cucumber</groupId>
+    <artifactId>cucumber-java</artifactId>
+    <version>7.15.0</version>
+
+###############################
+What is a BDD Framework?
+
+Behavior-Driven Development (BDD) is an agile software development methodology that enhances collaboration between developers, testers, and non-technical stakeholders (like business analysts) to ensure that everyone shares a common understanding of how an application should behave. Here are some key points:
+    
+Focus on Behavior:
+BDD emphasizes specifying the expected behavior of software using natural language. This makes requirements more accessible and understandable to all team members.
+
+Collaboration:
+It promotes close communication among team members, reducing the gap between technical implementation and business requirements.
+
+Living Documentation:
+By writing scenarios in plain language, the test cases serve as documentation that evolves with the application, ensuring that they always reflect the current state of the system.
+
+Shift-Left Testing:
+BDD encourages early testing during the development process, which helps in identifying issues sooner and ensures that the development aligns with business expectations.
+
+
+####################################
+
+How Does Cucumber Help Implement BDD?
+Cucumber is a popular tool that facilitates the implementation of BDD by providing a structured yet flexible approach to writing and executing tests. Here’s how Cucumber supports BDD:
+
+Gherkin Syntax:
+Gherkin is a domain-specific language (DSL) designed specifically for Behavior-Driven Development (BDD). It enables writing test scenarios in a plain, structured, and human-readable format, bridging the gap between technical teams and non-technical stakeholders.
+
+Feature Files:
+
+
+These files contain scenarios that describe the expected behavior of the application using keywords makes it easy to understand what is being tested and why.
+
+
+
+
+Keywords Summary :
+
+#Feature: List of scenarios.
+#Scenario: Business rule through list of steps with arguments.
+#Given: Some precondition step
+#When: Some key actions
+#Then: To observe outcomes or validation
+#And,But: To enumerate more Given,When,Then steps
+#Scenario Outline: List of steps for data-driven as an Examples and <placeholder>
+#Examples: Container for s table
+#Background: List of steps run before each of the scenarios
+#""" (Doc Strings)
+#| (Data Tables)
+#@ (Tags/Labels):To group Scenarios
+#<> (placeholder)
+#""
+## (Comments)
+
+Step Definitions:
+Each line in a Gherkin scenario is linked to a corresponding code block (step definition). These methods, written in a programming language like Java, perform the actual testing actions (e.g., interacting with the application, verifying outcomes).
+
+Integration with Testing Frameworks:
+Cucumber integrates seamlessly with frameworks such as JUnit, TestNG (in Java) to run tests. This integration allows teams to leverage familiar testing tools while using a BDD approach.
+
+Hooks for Pre/Post Conditions:
+Cucumber provides hooks (e.g., @Before and @After) to run code before and after each scenario. This is useful for setup (like launching a browser) and teardown tasks (like taking screenshots or closing connections).
+
+Living Documentation & Reporting:
+Since scenarios are written in plain language, they double as documentation. Additionally, Cucumber’s reporting features (like JVM or HTML reports) help teams track test execution and quality metrics.
+
+################################################################
+
+History of Cucumber
+Cucumber’s Evolution:
+
+Origins in Ruby (2008):
+Cucumber was created by Aslak Hellesoy in 2008 as an open-source tool for acceptance testing(UAT), primarily targeting the Ruby community. It was developed in response to the growing need for a more collaborative testing approach that would make test scenarios understandable to non-programmers.
+
+Rise of BDD:
+The emergence of BDD, driven by thought leaders like Dan North, influenced Cucumber’s development. BDD’s emphasis on clear communication and behavior specification aligned perfectly with what Cucumber was designed to do.
+
+Expansion to Multiple Languages:
+Recognizing the broader appeal of BDD, Cucumber evolved beyond Ruby. Implementations like Cucumber-JVM were introduced, allowing teams working in Java and other languages to adopt BDD practices. This expansion helped Cucumber become a versatile and widely adopted testing tool across different development ecosystems.
+
+
+
+In Summary
+
+BDD is a methodology that emphasizes collaboration and shared understanding through behavior-focused, human-readable test scenarios.
+Cucumber implements BDD by using Gherkin syntax to write feature files, mapping these to executable code with step definitions, and integrating with standard testing frameworks. It also provides hooks and detailed reporting to streamline the testing process.
+Cucumber’s History begins in 2008 within the Ruby community, growing alongside the BDD movement and expanding its support to multiple programming languages, making it a cornerstone tool in modern agile testing practices.
+
+
