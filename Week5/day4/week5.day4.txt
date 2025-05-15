@@ -1,0 +1,194 @@
+
+
+
+
+
+###################################################################################
+
+  
+---------------------------------------------------------------
+| Layer               | Location in Maven Project            | Reason for this Location                                   |
+---------------------------------------------------------------
+| Feature Files       | src/test/resources/features/        | - Maven treats src/test/resources/ as the standard        |
+| (.feature)         |                                      |   folder for test resources.                              |
+|                    |                                      | - Feature files are not Java code but test data, so they  |
+|                    |                                      |   do not need to be compiled.                            |
+|                    |                                      | - Cucumber automatically looks for .feature files here.  |
+---------------------------------------------------------------
+| Step Definitions   | src/test/java/stepDefinitions/      | - Step definitions are Java code and must be compiled,   |
+|                    |                                      |   so they go inside src/test/java/.                      |
+|                    |                                      | - Keeping them separate from feature files maintains     |
+|                    |                                      |   separation of concerns.                                |
+|                    |                                      | - Makes it easier to debug and maintain test logic.      |
+---------------------------------------------------------------
+| Test Runner        | src/test/java/runners/              | - The test runner (TestNG, JUnit, or Cucumber.class) is  |
+|                    |                                      |   an entry point for execution.                          |
+|                    |                                      | - Needs to be inside src/test/java/ because it's Java    |
+|                    |                                      |   code and should be compiled.                          |
+|                    |                                      | - Placing it in runners/ keeps it separate from step     |
+|                    |                                      |   definitions.                                           |
+---------------------------------------------------------------
+| Base Class        | src/test/java/base/                 | - The BaseClass is a common utility class (e.g.,        |
+|                   |                                      |   WebDriver setup).                                      |
+|                   |                                      | - Placing it in base/ prevents duplication and allows   |
+|                   |                                      |   all step definitions to inherit from it.              |
+|                   |                                      | - Ensures better modularity and reusability.            |
+---------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+###################################################################################
+$$$Feature Files:
+These files contain scenarios that describe the expected behavior of the application using keywords such as
+
+Feature:
+Describes the high-level functionality or user story. It sets the overall context for what is being automated.
+
+Background:
+Contains common steps or preconditions that are run before each scenario in the feature. It acts as the pre-match routine for every test.
+
+Scenario:
+Defines a specific test case or example of behavior. It outlines a clear, step-by-step plan for one particular situation.
+
+Scenario Outline:
+Similar to a Scenario but used to run the same test steps with different sets of input data. It helps in testing variations of a scenario.
+
+Examples:
+A table of data provided for a Scenario Outline, offering multiple sets of values to test the same scenario under different conditions.
+
+Given:
+Sets up the initial context or preconditions for the test, ensuring that the environment is ready before actions are performed.
+
+When:
+Describes the action or event that triggers the behavior within the test scenario.
+
+Then:
+Specifies the expected outcome or result after the action is taken.
+
+And:
+Connects additional steps to the Given, When, or Then clauses, adding further details or conditions.
+
+But:
+Introduces exceptions or alternative outcomes to the main steps, describing what should happen if conditions change.
+
+Data Tables:
+Provide structured input data for the scenario. They are used to supply detailed metrics or multiple parameters in a tabular format.
+
+Doc Strings:
+Allow the inclusion of multi-line text blocks for detailed instructions or additional context, similar to extended notes.
+
+Comments:
+Non-executable lines (usually starting with #) that offer extra context or clarifications without affecting the test execution.
+
+How to name a feature file :
+
+Best Practices
+
+✅ Avoid spaces and special characters (use - instead).
+✅ Use meaningful and readable names to reflect the purpose.
+✅ Keep file names under 30-40 characters for readability.
+✅ Organize feature files logically (e.g., src/test/resources/features/user-login.feature).
+
+
+| Element                     | Casing Style  | Example                                      |
+|-----------------------------|-------------- |----------------------------------------------|
+| Feature Name                | Title Case    | Feature: User Authentication                |
+| Scenario Name               | Title Case    | Scenario: Successful Login with Valid Credentials |
+| Step Definitions  	      | Sentence case | Given the user is on the login page        |
+(Given/When/Then/And/But)   
+| Tags 			      | PascalCase    | @SmokeTest @RegressionTest       	|
+(@SmokeTest, @RegressionTest)
+
+
+Explanation of Casing Standards
+
+✅ Feature & Scenario Titles → Title Case
+Use Title Case (capitalize first letter of each major word).
+This improves readability and follows software documentation best practices.
+
+example: 
+
+Feature: User Authentication  
+Scenario: Successful Login with Valid Credentials 
+
+
+✅ Steps (Given/When/Then/And/But) → Sentence case
+
+The first letter should be capitalized.
+Keep the rest of the sentence in lowercase, unless referencing proper nouns.
+
+Example:
+
+When the user enters the username as "demosalesmanager"
+When the user enters the password as "crmsfa"
+And the user clicks the login button
+Then the user should be redirected to the homepage
+
+
+
+
+###############################
+
+
+Step Definitions:
+
+Each line in a Gherkin scenario is linked to a corresponding code block (step definition). These methods, written in a programming language like Java, perform the actual testing actions (e.g., interacting with the application, verifying outcomes).
+
+Integration with Testing Frameworks:
+Cucumber integrates seamlessly with frameworks such as JUnit, TestNG (in Java) to run tests. This integration allows teams to leverage familiar testing tools while using a BDD approach.
+
+Hooks for Pre/Post Conditions:
+Cucumber provides hooks (e.g., @Before and @After) to run code before and after each scenario. This is useful for setup (like launching a browser) and teardown tasks (like taking screenshots or closing connections).
+
+Living Documentation & Reporting:
+Since scenarios are written in plain language, they double as documentation. Additionally, Cucumber’s reporting features (like JVM or HTML reports) help teams track test execution and quality metrics.
+
+
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------------
+
+$$$Base Class
+
+Definition:
+
+A Base Class is a superclass that contains common methods, configurations, and utilities that are shared across different step definition classes. It centralizes functionalities like browser setup, teardown methods, and utility functions, ensuring that repetitive code is written only once.
+
+Purpose:
+
+Code Reusability: By placing shared functionalities in the Base Class, you avoid duplicating code across multiple classes.
+
+Maintainability: Updates or changes (for example, a change in browser configuration) need to be made in just one place, simplifying maintenance.
+
+Consistency: Ensures that all tests start with the same setup and configurations, leading to uniform behavior across the test suite.
+
+ 
+
+static keyword
+ 
+single memory reference - share the memory as single all the object reference across the project
+inside the non static methods it allows all the members of the class (static variable , non-static variable, static method, non-static method) directly without the help of object reference.
+inside the static method it allow to call only the static members(static variable and static method) without object reference
+
+
+
+##################################################################################3
+
+
